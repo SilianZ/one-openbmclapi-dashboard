@@ -1,4 +1,14 @@
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://socialify.git.ci/SilianZ/one-openbmclapi-dashboard/image?description=1&language=1&name=1&pattern=Charlie%20Brown&theme=Dark">
+  <source media="(prefers-color-scheme: light)" srcset="https://socialify.git.ci/SilianZ/one-openbmclapi-dashboard/image?description=1&language=1&name=1&pattern=Charlie%20Brown&theme=Light">
+  <img src="https://socialify.git.ci/SilianZ/one-openbmclapi-dashboard/image?description=1&language=1&name=1&pattern=Charlie%20Brown&theme=Auto">
+</picture>
+
 # One OpenBMCLAPI Dashboard
+
+</div>
 
 基于 [Vue.js](https://cn.vuejs.org) + [PrimeVue](https://primevue.org)、统一通用程序接口（API）的 OpenBMCLAPI 仪表盘。
 
