@@ -12,5 +12,4 @@ const { data, loading, error } = useRequest((): Promise<StatsRes> => fetchStat()
 
 <template>
     <h1>Python OpenBMCLAPI 仪表盘</h1>
-    <ChartsComponent></ChartsComponent>
 </template>

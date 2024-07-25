@@ -12,7 +12,7 @@ export interface Stats {
 }
 
 export interface StatsRes {
-    startTime: string, // UTC time
+    startTime: number, // UTC time
 	stats: Stats,
 	prevStats: Stats,
 }
