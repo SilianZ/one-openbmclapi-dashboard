@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import Chart from 'primevue/chart'
 import { onMounted, ref, watch } from 'vue'
-import { type StatsData, formatBytes, formatNumber } from '../utils'
+import { formatBytes, formatNumber } from '../utils'
+import { type StatsData } from '@/api'
 const chartData = ref()
 const chartObj = ref()
 const chartOptions = ref()

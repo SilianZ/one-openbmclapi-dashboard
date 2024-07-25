@@ -1,8 +1,3 @@
-export interface StatsData {
-	hits: number,
-	bytes: number
-}
-
 const bUnits = ['KB', 'MB', 'GB', 'TB']
 
 export function formatBytes(bytes: number): string {
