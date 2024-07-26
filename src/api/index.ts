@@ -1,23 +1,23 @@
-import axios from "axios";
+import axios from 'axios'
 
 export interface StatsData {
-	hits: number,
-	bytes: number
+    hits: number
+    bytes: number
 }
 
 export interface Stats {
-	hours: StatsData[]
-	days: StatsData[]
-	months: StatsData[]
+    hours: StatsData[]
+    days: StatsData[]
+    months: StatsData[]
 }
 
 export interface StatsRes {
-    startTime: number, // UTC time
-	stats: Stats,
-	prevStats: Stats,
+    startTime: number // UTC time
+    stats: Stats
+    prevStats: Stats
 }
 
-export async function fetchStat(): Promise<StatsRes> {
-    const res = await axios.get<StatsRes>('localhost:3000/status')
-	return res.data
+export async function fetchStat() {
+    const res = await axios.get<StatsRes>('http://127.0.0.1:3000/status')
+    return res.data
 }
