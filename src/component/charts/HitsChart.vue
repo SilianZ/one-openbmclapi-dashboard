@@ -3,6 +3,7 @@ import Chart from 'primevue/chart'
 import { onMounted, ref, watch } from 'vue'
 import { formatBytes, formatNumber } from '../utils'
 import { type StatsData } from '@/api'
+import { $dt } from '@primevue/themes'
 const chartData = ref()
 const chartObj = ref()
 const chartOptions = ref()
@@ -14,9 +15,9 @@ const props = defineProps<{
     max: number
     formatX: (i: number) => string // 格式化 x 轴单位
 }>()
+const chartCurrentLineX = ref(-1)
 
 const setChartData = () => {
-    const documentStyle = getComputedStyle(document.documentElement)
     const max = props.max
     const offset = Math.floor(props.current - props.offset) // offset <= 0
     const hits = Array(max)
@@ -49,6 +50,7 @@ const setChartData = () => {
         for (let i = 0; i < max; i++) {
             label[i] = props.formatX(i + offset + 1)
         }
+        chartCurrentLineX.value = props.current - offset - 1
     }
     console.log(hits, bytes)
     updateData()
@@ -59,13 +61,14 @@ const setChartData = () => {
             chartObj.value.refresh()
         }
     )
+    console.log($dt('indigo.300').value)
     return {
         labels: label,
         datasets: [
             {
                 label: '访问量',
                 fill: true,
-                borderColor: documentStyle.getPropertyValue('--blue-500'),
+                borderColor: $dt('blue.500').value,
                 yAxisID: 'y1',
                 tension: 0.3,
                 data: hits
@@ -73,7 +76,7 @@ const setChartData = () => {
             {
                 label: '流量',
                 fill: true,
-                borderColor: documentStyle.getPropertyValue('--green-500'),
+                borderColor: $dt('teal.500').value,
                 yAxisID: 'y2',
                 tension: 0.3,
                 data: bytes
@@ -82,11 +85,7 @@ const setChartData = () => {
     }
 }
 const setChartOptions = () => {
-    const documentStyle = getComputedStyle(document.documentElement)
-    const textColor = documentStyle.getPropertyValue('--text-color')
     const offset = Math.floor(props.current - props.offset) // offset <= 0
-    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary')
-    const surfaceBorder = documentStyle.getPropertyValue('--surface-border')
 
     return {
         stacked: false,
@@ -96,11 +95,6 @@ const setChartOptions = () => {
         },
         maintainAspectRatio: false,
         plugins: {
-            legend: {
-                labels: {
-                    color: textColor
-                }
-            },
             tooltip: {
                 callbacks: {
                     label: (context: any) => {
@@ -118,23 +112,17 @@ const setChartOptions = () => {
                         return `${props.formatX(offset + i)} ~ ${props.formatX(offset + i + 1)}`
                     }
                 }
+            },
+            'custom-vertical-line': {
+                lineX: chartCurrentLineX
             }
         },
         scales: {
-            x: {
-                ticks: {
-                    color: textColorSecondary
-                },
-                grid: {
-                    color: surfaceBorder
-                }
-            },
             y1: {
                 type: 'linear',
                 display: true,
                 position: 'left',
                 ticks: {
-                    color: textColorSecondary,
                     callback: formatNumber
                 }
             },
@@ -143,7 +131,6 @@ const setChartOptions = () => {
                 display: true,
                 position: 'right',
                 ticks: {
-                    color: textColorSecondary,
                     callback: formatBytes
                 }
             }
