@@ -20,9 +20,9 @@ const items = ref([
 const iconClass = ref('pi-sun')
 
 function toggleColorScheme() {
-	const root = document.getElementsByTagName('html')[0];
-	root.classList.toggle('p-dark');
-	iconClass.value = iconClass.value === 'pi-moon' ? 'pi-sun' : 'pi-moon';
+    const root = document.getElementsByTagName('html')[0]
+    root.classList.toggle('p-dark')
+    iconClass.value = iconClass.value === 'pi-moon' ? 'pi-sun' : 'pi-moon'
 }
 </script>
 
@@ -30,7 +30,7 @@ function toggleColorScheme() {
     <div>
         <Menubar :model="items">
             <template #start>
-                <img src="./assets/logo.svg" style="height: 30px;" />
+                <img src="./assets/logo.svg" style="height: 30px" />
             </template>
             <template #end>
                 <Button @click="toggleColorScheme()">

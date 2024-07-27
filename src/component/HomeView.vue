@@ -21,12 +21,11 @@ watch(
         stats.value = newData
     }
 )
-
 </script>
 
 <template>
     <h1>One OpenBMCLAPI 仪表盘</h1>
-    <StatsComponent :data="stats"/>
+    <StatsComponent :data="stats" />
     <ChartsComponent :data="stats" />
 </template>
 

@@ -48,11 +48,10 @@ const formatMonths = (month: number) => {
     const date = new Date(Date.UTC(currentTime.value.year, month + 1, 1))
     return `${date.getFullYear()} 年 ${(date.getMonth() + 1).toString().padStart(2, '0')} 月`
 }
-
 </script>
 
 <template>
-    <div class="flex flex-wrap block rounded-lg p-4" id="charts-container">
+    <div class="flex flex-wrap rounded-lg p-4" id="charts-container">
         <div class="flex h-[17rem] m-2 flex-col">
             <h3>当日请求</h3>
             <HitsChart

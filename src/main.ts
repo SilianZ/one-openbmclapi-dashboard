@@ -62,8 +62,8 @@ app.use(PrimeVue, {
     theme: {
         preset: Noir,
         options: {
-            darkModeSelector: '.p-dark',
-        },
+            darkModeSelector: '.p-dark'
+        }
     }
 })
 app.mount('#app')
