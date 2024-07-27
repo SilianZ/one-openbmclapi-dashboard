@@ -13,7 +13,7 @@ const items = ref([
     {
         label: 'GitHub',
         icon: 'pi pi-github',
-        url: 'https://github.com/TTB-Network/python-openbmclapi'
+        url: 'https://github.com/SilianZ/one-openbmclapi-dashboard'
     }
 ])
 

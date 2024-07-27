@@ -25,7 +25,7 @@ watch(
 </script>
 
 <template>
-    <h1>Python OpenBMCLAPI 仪表盘</h1>
+    <h1>One OpenBMCLAPI 仪表盘</h1>
     <StatsComponent :data="stats"/>
     <ChartsComponent :data="stats" />
 </template>
