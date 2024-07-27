@@ -2,10 +2,9 @@ import { createApp } from 'vue'
 import router from './router'
 import App from './App.vue'
 import PrimeVue from 'primevue/config'
-import './component/utils/chart'
+import './utils/chart'
 import Aura from '@primevue/themes/aura'
 import 'primeicons/primeicons.css'
-import 'primeflex/primeflex.css'
 import { definePreset } from '@primevue/themes'
 
 const Noir = definePreset(Aura, {
@@ -63,8 +62,8 @@ app.use(PrimeVue, {
     theme: {
         preset: Noir,
         options: {
-            darkModeSelector: '.switch-color-mode'
-        }
+            darkModeSelector: '.p-dark',
+        },
     }
 })
 app.mount('#app')

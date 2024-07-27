@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Chart from 'primevue/chart'
 import { onMounted, ref, watch } from 'vue'
-import { formatBytes, formatNumber } from '../utils'
+import { formatBytes, formatNumber } from '../../utils'
 import { type StatsData } from '@/api'
 import { $dt } from '@primevue/themes'
 const chartData = ref()
@@ -68,7 +68,7 @@ const setChartData = () => {
             {
                 label: '访问量',
                 fill: true,
-                borderColor: $dt('blue.500').value,
+                borderColor: '#ff8859',
                 yAxisID: 'y1',
                 tension: 0.3,
                 data: hits
@@ -86,7 +86,10 @@ const setChartData = () => {
 }
 const setChartOptions = () => {
     const offset = Math.floor(props.current - props.offset) // offset <= 0
-
+    const documentStyle = getComputedStyle(document.documentElement)
+    const textColor = documentStyle.getPropertyValue('--p-text-color')
+    const textColorSecondary = documentStyle.getPropertyValue('--p-text-muted-color')
+    const surfaceBorder = documentStyle.getPropertyValue('--p-content-border-color')
     return {
         stacked: false,
         interaction: {
@@ -115,15 +118,32 @@ const setChartOptions = () => {
             },
             'custom-vertical-line': {
                 lineX: chartCurrentLineX
+            },
+            legend: {
+                labels: {
+                    color: textColor
+                }
             }
         },
         scales: {
+            x: {
+                ticks: {
+                    color: textColorSecondary
+                },
+                grid: {
+                    color: surfaceBorder
+                }
+            },
             y1: {
                 type: 'linear',
                 display: true,
                 position: 'left',
                 ticks: {
-                    callback: formatNumber
+                    callback: formatBytes,
+                    color: textColorSecondary
+                },
+                grid: {
+                    color: surfaceBorder
                 }
             },
             y2: {
@@ -131,7 +151,11 @@ const setChartOptions = () => {
                 display: true,
                 position: 'right',
                 ticks: {
-                    callback: formatBytes
+                    callback: formatBytes,
+                    color: textColorSecondary
+                },
+                grid: {
+                    color: surfaceBorder
                 }
             }
         }
