@@ -10,7 +10,7 @@
 
 </div>
 
-基于 [Vue.js](https://cn.vuejs.org) + [PrimeVue](https://primevue.org)、统一通用程序接口（API）的 OpenBMCLAPI 仪表盘。
+基于 [Vue.js 3](https://cn.vuejs.org) + [PrimeVue 4](https://primevue.org) + [tailwindcss](https://tailwindcss.com/)、统一通用程序接口（API）的 OpenBMCLAPI 仪表盘。
 
 使用 [TypeScript](https://www.typescriptlang.org) 编写。
 
@@ -49,3 +49,9 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## 特别鸣谢
+
+[LiterMC/go-openbmclapi](https://github.com/LiterMC/go-openbmclapi) 提供的部分代码。
+
+[Kevin Z](https://github.com/zyxkad) 提供的技术支持。
