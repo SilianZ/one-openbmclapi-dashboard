@@ -9,6 +9,6 @@ body {
 
 @media screen and (max-width: 720px) {
     body {
-        margin: 4px
+        margin: 4px;
     }
 }
