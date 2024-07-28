@@ -68,7 +68,7 @@ const setChartData = () => {
             {
                 label: '访问量',
                 fill: true,
-                borderColor: '#ff8859',
+                borderColor: '#f8ab9b',
                 yAxisID: 'y1',
                 tension: 0.3,
                 data: hits
@@ -76,7 +76,7 @@ const setChartData = () => {
             {
                 label: '流量',
                 fill: true,
-                borderColor: $dt('teal.500').value,
+                borderColor: '#37a97d',
                 yAxisID: 'y2',
                 tension: 0.3,
                 data: bytes

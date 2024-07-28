@@ -3,6 +3,7 @@ import HitsChart from '@/component/charts/HitsChart.vue'
 import { type StatsRes } from '@/api'
 import { computed, ref } from 'vue'
 import Skeleton from 'primevue/skeleton'
+import UAChart from '@/component/charts/UAChart.vue'
 
 const props = defineProps<{
     data?: StatsRes | null
@@ -51,8 +52,8 @@ const formatMonths = (month: number) => {
 </script>
 
 <template>
-    <div class="flex flex-wrap rounded-lg p-4" id="charts-container">
-        <div class="flex h-[17rem] m-2 flex-col">
+    <div class="flex flex-wrap rounded-lg p-4 justify-center" id="charts-container">
+        <div class="flex m-2 flex-col" id="chart">
             <h3>当日请求</h3>
             <HitsChart
                 id="hits"
@@ -66,7 +67,7 @@ const formatMonths = (month: number) => {
             />
             <Skeleton v-else id="hits" height="15rem" width="38rem" />
         </div>
-        <div class="flex h-[17rem] m-2 flex-col">
+        <div class="flex m-2 flex-col" id="chart">
             <h3>当月请求</h3>
             <HitsChart
                 id="hits"
@@ -80,7 +81,7 @@ const formatMonths = (month: number) => {
             />
             <Skeleton v-else id="hits" height="15rem" width="38rem" />
         </div>
-        <div class="flex h-[17rem] m-2 flex-col">
+        <div class="flex m-2 flex-col" id="chart">
             <h3>当年请求</h3>
             <HitsChart
                 id="hits"
@@ -94,6 +95,16 @@ const formatMonths = (month: number) => {
             />
             <Skeleton v-else id="hits" height="15rem" width="38rem" />
         </div>
+        <div class="flex m-2 flex-col" id="chart">
+            <h3>用户分布</h3>
+            <UAChart
+                class="flex items-center justify-center h-[32rem]"
+                v-if="data"
+                id="uas"
+                :data="data.accesses"
+            />
+            <Skeleton v-else id="hits" height="15rem" width="38rem" />
+        </div>
     </div>
 </template>
 
@@ -101,6 +112,10 @@ const formatMonths = (month: number) => {
 #hits {
     min-width: 38rem;
     min-height: 13rem;
+}
+#chart {
+    min-width: 38rem;
+    min-height: 17rem;
 }
 #charts-container {
     margin-top: 2rem;
@@ -125,8 +140,9 @@ h3 {
         min-width: 12rem;
         min-height: 13rem;
     }
-    h1 {
-        font-size: small;
+    #chart {
+        min-width: auto;
+        min-height: 17rem;
     }
 }
 </style>

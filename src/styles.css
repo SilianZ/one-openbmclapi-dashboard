@@ -6,3 +6,9 @@ body {
     display: block;
     margin: 8px;
 }
+
+@media screen and (max-width: 720px) {
+    body {
+        margin: 4px
+    }
+}
