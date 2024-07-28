@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
 import Chart from 'primevue/chart'
+import { type UserAgent } from '@/api';
 
 const props = defineProps<{
-    data: { [ua: string]: number }
+    data: UserAgent
 }>()
 
 console.log(props.data)
@@ -22,7 +23,7 @@ const setChartData = () => {
     const labels = data.value.map(({ ua }) => ua)
     const counts = data.value.map(({ count }) => count)
 
-    const color = ['#acacb4', '#dd426a', '#87d5bb', '#37a97d', '#f8ab9b', '#7e789c', '#db9361']
+    const color = ['#767681', '#dd426a', '#87d5bb', '#37a97d', '#f8ab9b', '#7e789c', '#db9361']
 
     return {
         labels: labels,

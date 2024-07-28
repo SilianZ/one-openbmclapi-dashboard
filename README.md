@@ -3,10 +3,12 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://socialify.git.ci/SilianZ/one-openbmclapi-dashboard/image?description=1&language=1&name=1&pattern=Plus&theme=Dark">
   <source media="(prefers-color-scheme: light)" srcset="https://socialify.git.ci/SilianZ/one-openbmclapi-dashboard/image?description=1&language=1&name=1&pattern=Plus&theme=Light">
-  <img src="https://socialify.git.ci/SilianZ/one-openbmclapi-dashboard/image?description=1&language=1&name=1&pattern=Charlie%20Brown&theme=Auto">
+  <img src="https://socialify.git.ci/SilianZ/one-openbmclapi-dashboard/image?description=1&language=1&name=1&pattern=Plus%20Brown&theme=Auto">
 </picture>
 
 # One OpenBMCLAPI Dashboard
+
+[API 文档](https://python-openbmclapi.ttb-network.top/docs/api/one-openbmclapi-dashboard)
 
 </div>
 

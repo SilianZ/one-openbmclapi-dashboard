@@ -11,12 +11,16 @@ export interface Stats {
     months: StatsData[]
 }
 
+export interface UserAgent {
+    [ua: string]: number
+}
+
 export interface StatsRes {
     status: number
     startTime: number // UTC time
     stats: Stats
     prevStats: Stats
-    accesses: { [ua: string]: number }
+    accesses: UserAgent
 }
 
 export async function fetchStat() {
