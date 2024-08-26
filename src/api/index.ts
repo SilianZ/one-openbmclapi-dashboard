@@ -21,6 +21,9 @@ export interface StatsRes {
     stats: Stats
     prevStats: Stats
     accesses: UserAgent
+    connections: number
+    memory: number
+    cpu: number
 }
 
 export async function fetchStat() {

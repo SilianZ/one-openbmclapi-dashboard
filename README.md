@@ -8,7 +8,7 @@
 
 # One OpenBMCLAPI Dashboard
 
-[API 文档](https://python-openbmclapi.ttb-network.top/docs/api/one-openbmclapi-dashboard)
+[API 文档](https://python-openbmclapi.ttb-network.top/docs/api/one-openbmclapi-dashboard) | [Demo](https://one-openbmclapi-dashboard.bugungu.top/)
 
 </div>
 

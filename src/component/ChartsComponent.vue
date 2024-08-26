@@ -52,9 +52,9 @@ const formatMonths = (month: number) => {
 </script>
 
 <template>
-    <div class="flex flex-wrap rounded-lg p-4 justify-center" id="charts-container">
+    <div class="flex flex-wrap rounded-xl p-4 justify-center m-2" id="charts-container">
         <div class="flex m-2 flex-col" id="chart">
-            <h3>当日请求</h3>
+            <div class="charts-title">当日请求</div>
             <HitsChart
                 id="hits"
                 v-if="data"
@@ -65,10 +65,10 @@ const formatMonths = (month: number) => {
                 :offset="22"
                 :formatX="formatHours"
             />
-            <Skeleton v-else id="hits" height="15rem" width="38rem" />
+            <Skeleton v-else id="hits"/>
         </div>
         <div class="flex m-2 flex-col" id="chart">
-            <h3>当月请求</h3>
+            <div class="charts-title">当月请求</div>
             <HitsChart
                 id="hits"
                 v-if="data"
@@ -79,10 +79,10 @@ const formatMonths = (month: number) => {
                 :offset="27"
                 :formatX="formatDays"
             />
-            <Skeleton v-else id="hits" height="15rem" width="38rem" />
+            <Skeleton v-else id="hits"/>
         </div>
         <div class="flex m-2 flex-col" id="chart">
-            <h3>当年请求</h3>
+            <div class="charts-title">当年请求</div>
             <HitsChart
                 id="hits"
                 v-if="data"
@@ -93,38 +93,31 @@ const formatMonths = (month: number) => {
                 :offset="12"
                 :formatX="formatMonths"
             />
-            <Skeleton v-else id="hits" height="15rem" width="38rem" />
+            <Skeleton v-else id="hits"/>
         </div>
         <div class="flex m-2 flex-col" id="chart">
-            <h3>用户分布</h3>
+            <div class="charts-title">用户分布</div>
             <UAChart
-                class="flex items-center justify-center h-[32rem]"
+                class="flex items-center justify-center"
                 v-if="data"
                 id="uas"
                 :data="data.accesses"
             />
-            <Skeleton v-else id="hits" height="15rem" width="38rem" />
+            <Skeleton v-else id="uas"/>
         </div>
     </div>
 </template>
 
 <style scoped>
 #hits {
-    min-width: 38rem;
+    min-width: 37rem;
     min-height: 13rem;
 }
 #chart {
-    min-width: 38rem;
+    min-width: 37rem;
     min-height: 17rem;
 }
-#charts-container {
-    margin-top: 2rem;
-    padding-bottom: 1.5rem;
-    border: 1px solid var(--p-content-border-color);
-    background: var(--p-content-background);
-}
-
-h3 {
+.charts-title {
     display: block;
     font-size: 1.17em;
     margin-block-start: 1em;
@@ -133,6 +126,16 @@ h3 {
     margin-inline-end: 0px;
     font-weight: bold;
     unicode-bidi: isolate;
+}
+#charts-container {
+    margin-top: 2rem;
+    padding-bottom: 1.5rem;
+    border: 1px solid var(--p-content-border-color);
+    background: var(--p-content-background);
+}
+#uas {
+    min-width: 32rem;
+    min-height: 32rem;
 }
 
 @media screen and (max-width: 720px) {
@@ -143,6 +146,10 @@ h3 {
     #chart {
         min-width: auto;
         min-height: 17rem;
+    }
+    #uas {
+        min-width: auto;
+        min-height: auto;
     }
 }
 </style>

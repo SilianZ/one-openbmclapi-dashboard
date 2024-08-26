@@ -28,12 +28,12 @@ function toggleColorScheme() {
 
 <template>
     <div>
-        <Menubar :model="items">
+        <Menubar :model="items" class="menubar">
             <template #start>
                 <img src="./assets/logo.svg" style="height: 30px" />
             </template>
             <template #end>
-                <Button @click="toggleColorScheme()">
+                <Button @click="toggleColorScheme()" class="button">
                     <i :class="`pi ${iconClass}`" />
                 </Button>
             </template>
@@ -48,6 +48,14 @@ function toggleColorScheme() {
 #body {
     padding: 1rem 2rem 4rem 2rem;
     min-height: 100vh;
+}
+
+.button {
+    border-radius: 0.5rem;
+}
+
+.menubar {
+    border-radius: 0.5rem;
 }
 
 @media screen and (max-width: 720px) {
