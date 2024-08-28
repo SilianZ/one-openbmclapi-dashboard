@@ -66,8 +66,8 @@ const status = computed(() => {
     background: var(--p-content-background);
     padding-left: 2rem;
     padding-right: 2rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 1.35rem;
+    padding-bottom: 1.35rem;
     width: calc(25% - 0.5rem);
 }
 .stats-title {
@@ -83,6 +83,7 @@ const status = computed(() => {
 .stats-data {
     display: block;
     font-size: 1.58em;
+    font-weight: 700;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     unicode-bidi: isolate;
