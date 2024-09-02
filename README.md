@@ -1,10 +1,6 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://socialify.git.ci/SilianZ/one-openbmclapi-dashboard/image?description=1&language=1&name=1&pattern=Plus&theme=Dark">
-  <source media="(prefers-color-scheme: light)" srcset="https://socialify.git.ci/SilianZ/one-openbmclapi-dashboard/image?description=1&language=1&name=1&pattern=Plus&theme=Light">
-  <img src="https://socialify.git.ci/SilianZ/one-openbmclapi-dashboard/image?description=1&language=1&name=1&pattern=Plus%20Brown&theme=Auto">
-</picture>
+![hero](https://github.com/user-attachments/assets/2227ca44-2043-4375-83a3-2d24ab221d5a)
 
 # One OpenBMCLAPI Dashboard
 
