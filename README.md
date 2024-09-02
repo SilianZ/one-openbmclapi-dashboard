@@ -1,6 +1,6 @@
 <div align="center">
 
-![hero](https://github.com/user-attachments/assets/2227ca44-2043-4375-83a3-2d24ab221d5a)
+![hero](https://github.com/user-attachments/assets/2e3f5f73-4297-48d7-9afb-635ee2e94545)
 
 # One OpenBMCLAPI Dashboard
 
