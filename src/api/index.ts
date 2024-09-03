@@ -24,6 +24,10 @@ export interface StatsRes {
     connections: number
     memory: number
     cpu: number
+    cpuType: string
+    pythonVersion: string
+    apiVersion: string
+    version: string
 }
 
 export async function fetchStat() {
