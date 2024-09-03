@@ -31,7 +31,7 @@ export interface StatsRes {
 }
 
 export async function fetchStat() {
-    const res = await axios.get<StatsRes>('http://127.0.0.1:3000/status')
+    const res = await axios.get<StatsRes>('/api/status')
     console.log(res.data)
     return res.data
 }
