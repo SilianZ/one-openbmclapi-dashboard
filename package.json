@@ -19,7 +19,7 @@
     "primeicons": "^7.0.0",
     "primevue": "^4.0.2",
     "tailwindcss-primeui": "^0.3.4",
-    "vue": "^3.4.34",
+    "vue": "^3.4.38",
     "vue-request": "^2.0.4",
     "vue-router": "^4.3.2"
   },

@@ -3,7 +3,6 @@ import Chart from 'primevue/chart'
 import { onMounted, ref, watch } from 'vue'
 import { formatBytes, formatNumber } from '../../utils'
 import { type StatsData } from '@/api'
-import { $dt } from '@primevue/themes'
 const chartData = ref()
 const chartObj = ref()
 const chartOptions = ref()
@@ -52,7 +51,6 @@ const setChartData = () => {
         }
         chartCurrentLineX.value = props.current - offset - 1
     }
-    console.log(hits, bytes)
     updateData()
     watch(
         () => [props.data, props.current],
@@ -61,7 +59,6 @@ const setChartData = () => {
             chartObj.value.refresh()
         }
     )
-    console.log($dt('indigo.300').value)
     return {
         labels: label,
         datasets: [

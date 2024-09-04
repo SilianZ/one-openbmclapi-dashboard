@@ -7,8 +7,6 @@ const props = defineProps<{
     data: UserAgent
 }>()
 
-console.log(props.data)
-
 const chartData = ref()
 const chartOptions = ref()
 
@@ -31,8 +29,7 @@ const setChartData = () => {
             {
                 data: counts,
                 backgroundColor: color,
-                hoverBackgroundColor: color.map((rgb) => rgb + '33'),
-                hoverOffset: 4
+                hoverOffset: 5
             }
         ]
     }

@@ -16,6 +16,8 @@ const data = computed(() => {
 
 const nowTime = ref(new Date())
 
+console.log(nowTime.value.getMonth())
+
 const currentTime = ref({
     hour: nowTime.value.getHours(),
     day: nowTime.value.getDate(),
@@ -23,7 +25,6 @@ const currentTime = ref({
     year: nowTime.value.getFullYear()
 })
 
-console.log(currentTime)
 
 const formatHours = (i: number) => {
     if (!data.value) {
@@ -38,7 +39,7 @@ const formatDays = (day: number) => {
     if (!data.value) {
         return ''
     }
-    const date = new Date(Date.UTC(currentTime.value.year, currentTime.value.month, day))
+    const date = new Date(Date.UTC(currentTime.value.year, currentTime.value.month + 1, day))
     return `${date.getMonth() + 1} 月 ${date.getDate()} 日`
 }
 
@@ -46,7 +47,7 @@ const formatMonths = (month: number) => {
     if (!data.value) {
         return ''
     }
-    const date = new Date(Date.UTC(currentTime.value.year, month + 1, 1))
+    const date = new Date(Date.UTC(currentTime.value.year, month - 1, 1))
     return `${date.getFullYear()} 年 ${(date.getMonth() + 1).toString().padStart(2, '0')} 月`
 }
 </script>
@@ -88,9 +89,9 @@ const formatMonths = (month: number) => {
                 v-if="data"
                 :data="data.stats.months"
                 :oldData="data.prevStats.months"
-                :current="currentTime.month"
+                :current="currentTime.month + 1"
                 :max="13"
-                :offset="12"
+                :offset="11"
                 :formatX="formatMonths"
             />
             <Skeleton v-else id="hits"/>
@@ -148,8 +149,8 @@ const formatMonths = (month: number) => {
         min-height: 17rem;
     }
     #uas {
-        min-width: auto;
-        min-height: auto;
+        min-width: 17rem;
+        min-height: 17rem;
     }
 }
 </style>
