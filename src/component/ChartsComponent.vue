@@ -113,6 +113,7 @@ const formatMonths = (month: number) => {
 #hits {
     min-width: 37rem;
     min-height: 13rem;
+    border-radius: 0.75rem;
 }
 #chart {
     min-width: 37rem;
@@ -141,7 +142,7 @@ const formatMonths = (month: number) => {
 
 @media screen and (max-width: 720px) {
     #hits {
-        min-width: 12rem;
+        min-width: 17rem;
         min-height: 13rem;
     }
     #chart {

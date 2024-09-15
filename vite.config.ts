@@ -10,5 +10,14 @@ export default defineConfig({
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))
         }
+    },
+    server: {
+        proxy: {
+            '/api/rank': {
+                target: 'https://bd.bangbang93.com/openbmclapi/metric/rank',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api\/rank/, '')
+            },
+        }
     }
 })

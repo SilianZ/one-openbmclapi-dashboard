@@ -55,11 +55,6 @@ const status = computed(() => {
             <div v-else class="stats-data">加载中……</div>
         </div>
         <div class="flex flex-col m-1 rounded-xl" id="stats-card">
-            <div class="stats-title">CPU 型号</div>
-            <div v-if="data" class="stats-data">{{ data.cpuType }}</div>
-            <div v-else class="stats-data">加载中……</div>
-        </div>
-        <div class="flex flex-col m-1 rounded-xl" id="stats-card">
             <div class="stats-title">Python 版本</div>
             <div v-if="data" class="stats-data">{{ data.pythonVersion }}</div>
             <div v-else class="stats-data">加载中……</div>

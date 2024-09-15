@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import StatsComponent from './StatsComponent.vue'
-import ChartsComponent from './ChartsComponent.vue'
+import StatsComponent from '@/component/StatsComponent.vue'
+import ChartsComponent from '@/component/ChartsComponent.vue'
 import { type StatsRes } from '@/api'
 import { useRequest } from 'vue-request'
 import { fetchStat } from '@/api'
 import { ref } from 'vue'
 import { watch } from 'vue'
 
-const { data } = useRequest((): Promise<StatsRes> => fetchStat(), { pollingInterval: 10000 })
+const { data } = useRequest((): Promise<StatsRes> => fetchStat(), { pollingInterval: 100000 })
 
 const stats = ref<StatsRes | null>(null)
 
@@ -24,7 +24,7 @@ watch(
 </script>
 
 <template>
-    <h1>One OpenBMCLAPI 仪表盘</h1>
+    <h1>主页</h1>
     <StatsComponent :data="stats" />
     <ChartsComponent :data="stats" />
 </template>

@@ -8,7 +8,12 @@ const items = ref([
     {
         label: '主页',
         icon: 'pi pi-home',
-        url: '/'
+        url: '/dashboard'
+    },
+    {
+        label: '排行',
+        icon: 'pi pi-trophy',
+        url: '/dashboard/rank'
     },
     {
         label: 'GitHub',

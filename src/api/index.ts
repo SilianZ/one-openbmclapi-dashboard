@@ -15,6 +15,16 @@ export interface UserAgent {
     [ua: string]: number
 }
 
+export interface Cluster {
+    _id: string
+    name: string
+    isEnabled: boolean
+    metric?: {
+        bytes: number
+        hits: number
+    }
+}
+
 export interface StatsRes {
     status: number
     startTime: number // UTC time
@@ -32,5 +42,10 @@ export interface StatsRes {
 
 export async function fetchStat() {
     const res = await axios.get<StatsRes>('/api/status')
+    return res.data
+}
+
+export async function fetchRank() {
+    const res = await axios.get<Cluster[]>('/api/rank')
     return res.data
 }
