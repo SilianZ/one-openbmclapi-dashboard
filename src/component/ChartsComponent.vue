@@ -48,7 +48,7 @@ const formatMonths = (month: number) => {
         return ''
     }
     const date = new Date(Date.UTC(currentTime.value.year, month - 1, 1))
-    return `${date.getFullYear()} 年 ${(date.getMonth() + 1).toString().padStart(2, '0')} 月`
+    return `${date.getFullYear()} 年 ${(date.getMonth()).toString().padStart(2, '0')} 月`
 }
 </script>
 
