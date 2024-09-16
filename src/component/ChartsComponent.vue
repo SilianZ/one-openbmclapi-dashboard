@@ -40,7 +40,7 @@ const formatDays = (day: number) => {
         return ''
     }
     const date = new Date(Date.UTC(currentTime.value.year, currentTime.value.month + 1, day))
-    return `${date.getMonth() + 1} 月 ${date.getDate()} 日`
+    return `${date.getMonth()} 月 ${date.getDate()} 日`
 }
 
 const formatMonths = (month: number) => {
@@ -48,7 +48,7 @@ const formatMonths = (month: number) => {
         return ''
     }
     const date = new Date(Date.UTC(currentTime.value.year, month - 1, 1))
-    return `${date.getFullYear()} 年 ${(date.getMonth()).toString().padStart(2, '0')} 月`
+    return `${date.getFullYear()} 年 ${(date.getMonth() + 1).toString().padStart(2, '0')} 月`
 }
 </script>
 

@@ -69,7 +69,7 @@ const getStatus = (data: string) => (data == 'online' ? '在线' : '离线')
             <Column field="hits" header="流量 / 访问量" />
         </DataTable>
     </div>
-    <Skeleton v-else height="300px" class="m-2" style="border-radius: 0.75rem;"></Skeleton>
+    <Skeleton v-else height="300px" class="m-2" style="border-radius: 0.75rem; margin-top: 2rem;"></Skeleton>
 </template>
 
 <style scoped>
