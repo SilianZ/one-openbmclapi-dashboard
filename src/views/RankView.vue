@@ -1,30 +1,22 @@
 <script setup lang="ts">
-import RankComponent from '@/component/RankComponent.vue';
-import { useRequest } from 'vue-request';
-import { fetchRank } from '@/api';
-import { type Cluster } from '@/api';
-import { ref, watch} from 'vue';
-
-const { data } = useRequest((): Promise<Cluster[]> => fetchRank(), { pollingInterval: 10000 })
-
-const rank = ref<Cluster[] | null>(null)
-
-watch(
-    () => data.value,
-    (newData) => {
-        if (!newData) {
-            rank.value = null
-            return
-        }
-        rank.value = newData
+import Silian_RankComponent from '@/component/RankComponent.vue';
+import { useRequest as Silian_useRequest } from 'vue-request';
+import { fetchRank as Silian_fetchRank } from '@/api';
+import { type Cluster as Silian_Cluster } from '@/api';
+import { ref as Silian_ref, watch as Silian_watch } from 'vue';
+const { data: Silian_data } = Silian_useRequest((): Promise<Silian_Cluster[]> => Silian_fetchRank(), { pollingInterval: 10000 });
+const Silian_rank = Silian_ref<Silian_Cluster[] | null>(null);
+Silian_watch(() => Silian_data.value, (Silian_newData) => {
+    if (!Silian_newData) {
+        Silian_rank.value = null;
+        return;
     }
-)
-
-</script>
+    Silian_rank.value = Silian_newData;
+});</script>
 
 <template>
     <h1>节点排行</h1>
-    <RankComponent :rank="rank" />
+    <Silian_RankComponent :rank="Silian_rank" />
 </template>
 
 <style scoped>

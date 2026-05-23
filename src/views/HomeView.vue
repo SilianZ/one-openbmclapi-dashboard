@@ -1,32 +1,25 @@
 <script setup lang="ts">
-import StatsComponent from '@/component/StatsComponent.vue'
-import ChartsComponent from '@/component/ChartsComponent.vue'
-import { type StatsRes } from '@/api'
-import { useRequest } from 'vue-request'
-import { fetchStat } from '@/api'
-import { ref } from 'vue'
-import { watch } from 'vue'
-
-const { data } = useRequest((): Promise<StatsRes> => fetchStat(), { pollingInterval: 100000 })
-
-const stats = ref<StatsRes | null>(null)
-
-watch(
-    () => data.value,
-    (newData) => {
-        if (!newData) {
-            stats.value = null
-            return
-        }
-        stats.value = newData
+import Silian_StatsComponent from '@/component/StatsComponent.vue';
+import Silian_ChartsComponent from '@/component/ChartsComponent.vue';
+import { type StatsRes as Silian_StatsRes } from '@/api';
+import { useRequest as Silian_useRequest } from 'vue-request';
+import { fetchStat as Silian_fetchStat } from '@/api';
+import { ref as Silian_ref } from 'vue';
+import { watch as Silian_watch } from 'vue';
+const { data: Silian_data } = Silian_useRequest((): Promise<Silian_StatsRes> => Silian_fetchStat(), { pollingInterval: 100000 });
+const Silian_stats = Silian_ref<Silian_StatsRes | null>(null);
+Silian_watch(() => Silian_data.value, (Silian_newData) => {
+    if (!Silian_newData) {
+        Silian_stats.value = null;
+        return;
     }
-)
-</script>
+    Silian_stats.value = Silian_newData;
+});</script>
 
 <template>
     <h1>主页</h1>
-    <StatsComponent :data="stats" />
-    <ChartsComponent :data="stats" />
+    <Silian_StatsComponent :data="Silian_stats" />
+    <Silian_ChartsComponent :data="Silian_stats" />
 </template>
 
 <style scoped>

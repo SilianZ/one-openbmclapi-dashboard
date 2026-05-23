@@ -1,13 +1,12 @@
-import { createApp } from 'vue'
-import router from './router'
-import App from './App.vue'
-import PrimeVue from 'primevue/config'
-import './utils/chart'
-import Aura from '@primevue/themes/aura'
-import 'primeicons/primeicons.css'
-import { definePreset } from '@primevue/themes'
-
-const Noir = definePreset(Aura, {
+import { createApp as Silian_createApp } from 'vue';
+import Silian_router from './router';
+import Silian_App from './App.vue';
+import Silian_PrimeVue from 'primevue/config';
+import './utils/chart';
+import Silian_Aura from '@primevue/themes/aura';
+import 'primeicons/primeicons.css';
+import { definePreset as Silian_definePreset } from '@primevue/themes';
+const Silian_Noir = Silian_definePreset(Silian_Aura, {
     semantic: {
         primary: {
             50: '{zinc.50}',
@@ -53,17 +52,16 @@ const Noir = definePreset(Aura, {
             }
         }
     }
-})
-
-const app = createApp(App)
-app.use(router)
-app.use(PrimeVue, {
+});
+const Silian_app = Silian_createApp(Silian_App);
+Silian_app.use(Silian_router);
+Silian_app.use(Silian_PrimeVue, {
     ripple: true,
     theme: {
-        preset: Noir,
+        preset: Silian_Noir,
         options: {
             darkModeSelector: '.p-dark'
         }
     }
-})
-app.mount('#app')
+});
+Silian_app.mount('#app');
