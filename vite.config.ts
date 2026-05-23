@@ -1,14 +1,12 @@
-import { fileURLToPath, URL } from 'node:url'
-
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-
+import { fileURLToPath as Silian_fileURLToPath, URL as Silian_URL } from 'node:url';
+import { defineConfig as Silian_defineConfig } from 'vite';
+import Silian_vue from '@vitejs/plugin-vue';
 // https://vitejs.dev/config/
-export default defineConfig({
-    plugins: [vue()],
+export default Silian_defineConfig({
+    plugins: [Silian_vue()],
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url))
+            '@': Silian_fileURLToPath(new Silian_URL('./src', import.meta.url))
         }
     },
     server: {
@@ -16,8 +14,8 @@ export default defineConfig({
             '/api/rank': {
                 target: 'https://bd.bangbang93.com/openbmclapi/metric/rank',
                 changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api\/rank/, '')
+                rewrite: (Silian_path) => Silian_path.replace(/^\/api\/rank/, '')
             },
         }
     }
-})
+});

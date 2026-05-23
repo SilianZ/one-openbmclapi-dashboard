@@ -1,110 +1,103 @@
 <script setup lang="ts">
-import HitsChart from '@/component/charts/HitsChart.vue'
-import { type StatsRes } from '@/api'
-import { computed, ref } from 'vue'
-import Skeleton from 'primevue/skeleton'
-import UAChart from '@/component/charts/UAChart.vue'
-
-const props = defineProps<{
-    data?: StatsRes | null
-}>()
-
-const data = computed(() => {
-    if (!props.data) return null
-    return props.data
-})
-
-const nowTime = ref(new Date())
-
-console.log(nowTime.value.getMonth())
-
-const currentTime = ref({
-    hour: nowTime.value.getHours(),
-    day: nowTime.value.getDate(),
-    month: nowTime.value.getMonth(),
-    year: nowTime.value.getFullYear()
-})
-
-
-const formatHours = (i: number) => {
-    if (!data.value) {
-        return ''
+import Silian_HitsChart from '@/component/charts/HitsChart.vue';
+import { type StatsRes as Silian_StatsRes } from '@/api';
+import { computed as Silian_computed, ref as Silian_ref } from 'vue';
+import Silian_Skeleton from 'primevue/skeleton';
+import Silian_UAChart from '@/component/charts/UAChart.vue';
+const Silian_props = defineProps<{
+    data?: Silian_StatsRes | null;
+}>();
+const Silian_data = Silian_computed(() => {
+    if (!Silian_props.data)
+        return null;
+    return Silian_props.data;
+});
+const Silian_nowTime = Silian_ref(new Date());
+console.log(Silian_nowTime.value.getMonth());
+const Silian_currentTime = Silian_ref({
+    hour: Silian_nowTime.value.getHours(),
+    day: Silian_nowTime.value.getDate(),
+    month: Silian_nowTime.value.getMonth(),
+    year: Silian_nowTime.value.getFullYear()
+});
+const Silian_formatHours = (Silian_i: number) => {
+    if (!Silian_data.value) {
+        return '';
     }
-    if (i < 0) i = 24 + i
-    if (i >= 24) i = i - 24
-    return `${i >= 10 ? i.toString() : `0${i.toString()}`}:00`
-}
-
-const formatDays = (day: number) => {
-    if (!data.value) {
-        return ''
+    if (Silian_i < 0)
+        Silian_i = 24 + Silian_i;
+    if (Silian_i >= 24)
+        Silian_i = Silian_i - 24;
+    return `${Silian_i >= 10 ? Silian_i.toString() : `0${Silian_i.toString()}`}:00`;
+};
+const Silian_formatDays = (Silian_day: number) => {
+    if (!Silian_data.value) {
+        return '';
     }
-    const date = new Date(Date.UTC(currentTime.value.year, currentTime.value.month + 1, day))
-    return `${date.getMonth()} 月 ${date.getDate()} 日`
-}
-
-const formatMonths = (month: number) => {
-    if (!data.value) {
-        return ''
+    const Silian_date = new Date(Date.UTC(Silian_currentTime.value.year, Silian_currentTime.value.month + 1, Silian_day));
+    return `${Silian_date.getMonth()} 月 ${Silian_date.getDate()} 日`;
+};
+const Silian_formatMonths = (Silian_month: number) => {
+    if (!Silian_data.value) {
+        return '';
     }
-    const date = new Date(Date.UTC(currentTime.value.year, month - 1, 1))
-    return `${date.getFullYear()} 年 ${(date.getMonth() + 1).toString().padStart(2, '0')} 月`
-}
-</script>
+    const Silian_date = new Date(Date.UTC(Silian_currentTime.value.year, Silian_month - 1, 1));
+    return `${Silian_date.getFullYear()} 年 ${(Silian_date.getMonth() + 1).toString().padStart(2, '0')} 月`;
+};</script>
 
 <template>
     <div class="flex flex-wrap rounded-xl p-4 justify-center m-2" id="charts-container">
         <div class="flex m-2 flex-col" id="chart">
             <div class="charts-title">当日请求</div>
-            <HitsChart
+            <Silian_HitsChart
                 id="hits"
-                v-if="data"
-                :data="data.stats.hours"
-                :oldData="data.prevStats.hours"
-                :current="currentTime.hour"
+                v-if="Silian_data"
+                :data="Silian_data.stats.hours"
+                :oldData="Silian_data.prevStats.hours"
+                :current="Silian_currentTime.hour"
                 :max="25"
                 :offset="22"
-                :formatX="formatHours"
+                :formatX="Silian_formatHours"
             />
-            <Skeleton v-else id="hits"/>
+            <Silian_Skeleton v-else id="hits"/>
         </div>
         <div class="flex m-2 flex-col" id="chart">
             <div class="charts-title">当月请求</div>
-            <HitsChart
+            <Silian_HitsChart
                 id="hits"
-                v-if="data"
-                :data="data.stats.days"
-                :oldData="data.prevStats.days"
-                :current="currentTime.day"
+                v-if="Silian_data"
+                :data="Silian_data.stats.days"
+                :oldData="Silian_data.prevStats.days"
+                :current="Silian_currentTime.day"
                 :max="31"
                 :offset="27"
-                :formatX="formatDays"
+                :formatX="Silian_formatDays"
             />
-            <Skeleton v-else id="hits"/>
+            <Silian_Skeleton v-else id="hits"/>
         </div>
         <div class="flex m-2 flex-col" id="chart">
             <div class="charts-title">当年请求</div>
-            <HitsChart
+            <Silian_HitsChart
                 id="hits"
-                v-if="data"
-                :data="data.stats.months"
-                :oldData="data.prevStats.months"
-                :current="currentTime.month + 1"
+                v-if="Silian_data"
+                :data="Silian_data.stats.months"
+                :oldData="Silian_data.prevStats.months"
+                :current="Silian_currentTime.month + 1"
                 :max="13"
                 :offset="11"
-                :formatX="formatMonths"
+                :formatX="Silian_formatMonths"
             />
-            <Skeleton v-else id="hits"/>
+            <Silian_Skeleton v-else id="hits"/>
         </div>
         <div class="flex m-2 flex-col" id="chart">
             <div class="charts-title">用户分布</div>
-            <UAChart
+            <Silian_UAChart
                 class="flex items-center justify-center"
-                v-if="data"
+                v-if="Silian_data"
                 id="uas"
-                :data="data.accesses"
+                :data="Silian_data.accesses"
             />
-            <Skeleton v-else id="uas"/>
+            <Silian_Skeleton v-else id="uas"/>
         </div>
     </div>
 </template>

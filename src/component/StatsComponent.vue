@@ -1,72 +1,68 @@
 <script setup lang="ts">
-import { type StatsRes } from '@/api'
-import { computed, ref } from 'vue'
-import { formatBytes } from '@/utils';
-
-const props = defineProps<{
-    data?: StatsRes | null
-}>()
-
-const data = computed(() => {
-    if (!props.data) return null
-    return props.data
-})
-const startTime = computed(() => data.value?.startTime ?? null)
-const nowTime = ref(new Date())
-
-const hours = computed(() => {
-    return startTime.value !== null
-        ? ((nowTime.value.getTime() - startTime.value) / (60 * 60 * 1000)).toFixed(2).toString()
-        : 'NaN'
-})
-
-const status = computed(() => {
-    const status = data.value?.status as number
-    const a = ['同步中', '运行中']
-    return a[status]
-})
-</script>
+import { type StatsRes as Silian_StatsRes } from '@/api';
+import { computed as Silian_computed, ref as Silian_ref } from 'vue';
+import { formatBytes as Silian_formatBytes } from '@/utils';
+const Silian_props = defineProps<{
+    data?: Silian_StatsRes | null;
+}>();
+const Silian_data = Silian_computed(() => {
+    if (!Silian_props.data)
+        return null;
+    return Silian_props.data;
+});
+const Silian_startTime = Silian_computed(() => Silian_data.value?.startTime ?? null);
+const Silian_nowTime = Silian_ref(new Date());
+const Silian_hours = Silian_computed(() => {
+    return Silian_startTime.value !== null
+        ? ((Silian_nowTime.value.getTime() - Silian_startTime.value) / (60 * 60 * 1000)).toFixed(2).toString()
+        : 'NaN';
+});
+const Silian_status = Silian_computed(() => {
+    const Silian_status = Silian_data.value?.status as number;
+    const Silian_a = ['同步中', '运行中'];
+    return Silian_a[Silian_status];
+});</script>
 
 <template>
     <div class="flex flex-wrap m-1 justify-between" id="stats-container">
         <div class="flex flex-col m-1 rounded-xl" id="stats-card">
             <div class="stats-title">运行时间</div>
-            <div v-if="data" class="stats-data">{{ hours }} 小时</div>
+            <div v-if="Silian_data" class="stats-data">{{ Silian_hours }} 小时</div>
             <div v-else class="stats-data">加载中……</div>
         </div>
         <div class="flex flex-col m-1 rounded-xl" id="stats-card">
             <div class="stats-title">服务器状态</div>
-            <div v-if="data" class="stats-data">{{ status }}</div>
+            <div v-if="Silian_data" class="stats-data">{{ Silian_status }}</div>
             <div v-else class="stats-data">加载中……</div>
         </div>
         <div class="flex flex-col m-1 rounded-xl" id="stats-card">
             <div class="stats-title">连接数</div>
-            <div v-if="data" class="stats-data">{{ data.connections }}</div>
+            <div v-if="Silian_data" class="stats-data">{{ Silian_data.connections }}</div>
             <div v-else class="stats-data">加载中……</div>
         </div>
         <div class="flex flex-col m-1 rounded-xl" id="stats-card">
             <div class="stats-title">内存情况</div>
-            <div v-if="data" class="stats-data">{{ formatBytes(data.memory) }}</div>
+            <div v-if="Silian_data" class="stats-data">{{ Silian_formatBytes(Silian_data.memory) }}</div>
             <div v-else class="stats-data">加载中……</div>
         </div>
         <div class="flex flex-col m-1 rounded-xl" id="stats-card">
             <div class="stats-title">CPU 情况</div>
-            <div v-if="data" class="stats-data">{{ data.cpu }}%</div>
+            <div v-if="Silian_data" class="stats-data">{{ Silian_data.cpu }}%</div>
             <div v-else class="stats-data">加载中……</div>
         </div>
         <div class="flex flex-col m-1 rounded-xl" id="stats-card">
             <div class="stats-title">Python 版本</div>
-            <div v-if="data" class="stats-data">{{ data.pythonVersion }}</div>
+            <div v-if="Silian_data" class="stats-data">{{ Silian_data.pythonVersion }}</div>
             <div v-else class="stats-data">加载中……</div>
         </div>
         <div class="flex flex-col m-1 rounded-xl" id="stats-card">
             <div class="stats-title">API 版本</div>
-            <div v-if="data" class="stats-data">{{ data.apiVersion }}</div>
+            <div v-if="Silian_data" class="stats-data">{{ Silian_data.apiVersion }}</div>
             <div v-else class="stats-data">加载中……</div>
         </div>
         <div class="flex flex-col m-1 rounded-xl" id="stats-card">
             <div class="stats-title">版本</div>
-            <div v-if="data" class="stats-data">{{ data.version }}</div>
+            <div v-if="Silian_data" class="stats-data">{{ Silian_data.version }}</div>
             <div v-else class="stats-data">加载中……</div>
         </div>
     </div>
